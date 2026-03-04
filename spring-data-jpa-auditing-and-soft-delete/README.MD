@@ -27,10 +27,11 @@ Les connecteurs *Java DataBase Connectivity (JDBC)* et *Reactive Relational Data
 
 - Java persistence API [![Generic badge](https://img.shields.io/badge/eBook-PDF-red.svg)](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2.pdf) [![Generic badge](https://img.shields.io/badge/Online-HTML-blue.svg)](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)
 
-- Hibernate pour Spring Boot v3.5 [![Generic badge](https://img.shields.io/badge/Online-HTML-blue.svg)](https://docs.hibernate.org/orm//6.6//userguide/html_single/)
-
-- Spring Data JPA pour Spring Boot v3.5 [![Generic badge](https://img.shields.io/badge/Online-HTML-blue.svg)](https://docs.spring.io/spring-data/jpa/reference/3.5/)
-
 - Hibernate pour Spring Boot v4.0 [![Generic badge](https://img.shields.io/badge/Online-HTML-blue.svg)](https://docs.hibernate.org/stable/orm/userguide/html_single/)
 
 - Spring Data JPA pour Spring Boot v4.0 [![Generic badge](https://img.shields.io/badge/Online-HTML-blue.svg)](https://docs.spring.io/spring-data/jpa/reference/)
+
+## Nouveautés
+
+Hibernate a introduit depuis la version 7 une nouvelle option de stratégie pour la gestion de la suppression logique, basée sur une colonne de type Timestamp
+
