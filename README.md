@@ -1,3 +1,5 @@
+[![Java CI with Maven](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/maven.yml/badge.svg)](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/maven.yml)
+
 <p align="center">
     <a href="https://fms-ea.com/">
         <img src="./src/main/resources/ENR-COM-12-Logo_FMS_MY_SYSTEM-v1.0.png" alt="FMS" width="100"/>
