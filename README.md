@@ -1,5 +1,5 @@
 [![Java CI with Maven](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/maven.yml/badge.svg)](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/maven.yml)
-[![Java CI with Maven](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/maven.yml/badge.svg)](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/maven.yml)
+[![Dependency review](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/dependency-review.yml)
 
 <p align="center">
     <a href="https://fms-ea.com/">
