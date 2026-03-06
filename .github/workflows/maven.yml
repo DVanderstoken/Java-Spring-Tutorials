@@ -10,9 +10,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "version/spring-boot-4.0" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "version/spring-boot-4.0" ]
 
 jobs:
   build:
