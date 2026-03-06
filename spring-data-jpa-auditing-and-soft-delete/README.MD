@@ -35,3 +35,9 @@ Les connecteurs *Java DataBase Connectivity (JDBC)* et *Reactive Relational Data
 
 Hibernate a introduit depuis la version 7 une nouvelle option de stratégie pour la gestion de la suppression logique, basée sur une colonne de type Timestamp
 
+Changement par rapport à Spring Boot 3.5 : 
+
+- **changement de stratégie** sur le *@SoftDelete* -> **strategy.TIMESTAMP**
+
+- **suppression du convertisseur** devenu inutile 
+
