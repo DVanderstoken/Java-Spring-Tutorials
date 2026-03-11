@@ -3,7 +3,7 @@
 
 <p align="center">
     <a href="https://fms-ea.com/">
-        <img src="./src/main/resources/ENR-COM-12-Logo_FMS_MY_SYSTEM-v1.0.png" alt="FMS" width="100"/>
+        <img src="./resources/ENR-COM-12-Logo_FMS_MY_SYSTEM-v1.0.png" alt="FMS" width="100"/>
     </a>
 </p>
 
@@ -35,7 +35,7 @@ L'objectif est de mutaliser et de partager les connaissances des uns et des autr
 
 <hr />
 
-[Ressources](./Ressources/README.md)
+[Ressources](./resources/README.md)
 
 
 

@@ -1,5 +1,6 @@
 package com.fms.tutotrials.jpa.auditing.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -27,21 +28,25 @@ import lombok.ToString;
 @Builder
 @ToString
 @Table(name = "PART")
-public class Part {
-	
+public class Part implements Serializable {
+
+	/**
+	 * Generated seriazlVersionUID
+	 */
+	private static final long serialVersionUID = 285494567380949098L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PART_GENERATOR")
 	@SequenceGenerator(name = "SEQ_PART_GENERATOR", sequenceName = "SEQ_PRODUCT")
 	@Column(name = "ID")
 	private long id;
-	
+
 	@Column(name = "NAME")
 	private String name;
-	
+
 	@OneToMany
-	@JoinTable(name = "PRODUCT_PARTS", 
-	           joinColumns = { @JoinColumn(name = "PART_ID") }, 
-	           inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID") })
+	@JoinTable(name = "PRODUCT_PARTS", joinColumns = { @JoinColumn(name = "PART_ID") }, inverseJoinColumns = {
+			@JoinColumn(name = "PRODUCT_ID") })
 	private Set<Product> products;
 
 }

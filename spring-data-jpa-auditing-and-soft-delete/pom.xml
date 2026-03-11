@@ -3,18 +3,42 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.fms-ea.tutorials</groupId>
-		<artifactId>java-spring-tutorials</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
+
+
+	<groupId>com.fms-ea.tutorials</groupId>
 	<artifactId>spring-data-jpa-auditing</artifactId>
 	<name>Auditing entities with Spring Data JPA</name>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<properties>
+
+		<!-- Encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+
+		<!-- Java version -->
+		<java.version>21</java.version>
+
+		<spring-boot.version>4.0.3</spring-boot.version>
+
 	</properties>
 
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -26,13 +50,119 @@
 		</dependency>
 
 		<!-- Utilities -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<scope>compile</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- Tests dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.datafaker</groupId>
+			<artifactId>datafaker</artifactId>
+			<version>2.5.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jeasy</groupId>
+			<artifactId>easy-random-core</artifactId>
+			<version>5.0.0</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
+			</plugin>
+
+			<!-- Configure annotations processors -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.15.0</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+
+			<!-- Code coverage config -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.5</version>
+				<configuration>
+					<argLine>@{argLine}</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.14</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<includes>
+								<include>com/fms/tutotrials/jpa/auditing/**/*</include>
+							</includes>
+						</configuration>
+					</execution>
+					<execution>
+						<id>report-aggregate</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report-aggregate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<dataFile>${project.build.directory}/jacoco.exec</dataFile>
+					<excludes>
+						<exclude>**/*Test</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
 
 	<reporting>
 		<plugins>
@@ -53,13 +183,7 @@
 				<configuration>
 					<minmemory>128m</minmemory>
 					<maxmemory>512m</maxmemory>
-					<source>21</source>
-					<!-- doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
-					<docletArtifact>
-						<groupId>org.umlgraph</groupId>
-						<artifactId>umlgraph</artifactId>
-						<version>5.6.6</version>
-					</docletArtifact -->
+					<source>${java.version}</source>
 					<additionalparam>
 						-inferrel -inferdep -quiet -hide java.*
 						-collpackages java.util.* -qualify
@@ -93,30 +217,10 @@
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>3.28.0</version>
 				<configuration>
-					<!-- rulesets>
-						<ruleset>/rulesets/basic.xml</ruleset>
-						<ruleset>/rulesets/braces.xml</ruleset>
-						<ruleset>/rulesets/codesize.xml</ruleset>
-						<ruleset>/rulesets/coupling.xml</ruleset>
-						<ruleset>/rulesets/design.xml</ruleset>
-						<ruleset>/rulesets/imports.xml</ruleset>
-						<ruleset>/rulesets/j2ee.xml</ruleset>
-						<ruleset>/rulesets/naming.xml</ruleset>
-						<ruleset>/rulesets/optimizations.xml</ruleset>
-						<ruleset>/rulesets/strictexception.xml</ruleset>
-						<ruleset>/rulesets/strings.xml</ruleset>
-						<ruleset>/rulesets/unusedcode.xml</ruleset>
-					</rulesets -->
-					<compilerVersion>21</compilerVersion>
-					<targetJdk>21</targetJdk>
+					<compilerVersion>${java.version}</compilerVersion>
+					<targetJdk>${java.version}</targetJdk>
 				</configuration>
 			</plugin>
-			<!-- Activité des développeurs sur le projet -->
-			<!--plugin>
-				        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-changelog-plugin</artifactId>
-        <version>3.0.0-M1</version>
-			</!plugin-->
 			<!-- Rapport croisé des sources du projet -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -138,12 +242,6 @@
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>2.0</version>
 			</plugin>
-			<!-- Couverture des tests -->
-			<!-- plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.7</version>
-			</plugin -->
 			<!-- Rapport de tests JUnit -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -169,15 +267,10 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
-			<!-- <plugin> <groupId>com.wakaleo.schemaspy</groupId> <artifactId>maven-schemaspy-plugin</artifactId> 
-				<version>1.1-SNAPSHOT</version> <configuration> <databaseType>orathin</databaseType> 
-				<database>BA2AID01</database> <host>ldbv3.cnasea.fr</host> <port>1521</port> 
-				<jdbcUrl>jdbc:oracle:thin:@ldbv3.cnasea.fr:1521:BA2AID01</jdbcUrl> <user>${schemaspy.username}</user> 
-				<password>${schemaspy.password}</password> </configuration> </plugin> -->
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
-    <artifactId>spotbugs-maven-plugin</artifactId>
-    <version>4.9.8.2</version>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>4.9.8.2</version>
 			</plugin>
 
 		</plugins>
