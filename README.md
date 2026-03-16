@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/dvanderstoken/java-spring-tutorials/badge)](https://www.codefactor.io/repository/github/dvanderstoken/java-spring-tutorials)
+
 <p align="center">
     <em>« Se réunir est un début, rester ensemble est un progrès, travailler ensemble est la réussite »</em>
 </p>
