@@ -139,18 +139,6 @@
 						<goals>
 							<goal>report</goal>
 						</goals>
-						<configuration>
-							<includes>
-								<include>com/fms/tutotrials/jpa/auditing/**/*</include>
-							</includes>
-						</configuration>
-					</execution>
-					<execution>
-						<id>report-aggregate</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>report-aggregate</goal>
-						</goals>
 					</execution>
 				</executions>
 				<configuration>
@@ -273,13 +261,6 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.14</version>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>report-aggregate</report>
-						</reports>
-					</reportSet>
-				</reportSets>
 			</plugin>
 		</plugins>
 	</reporting>
