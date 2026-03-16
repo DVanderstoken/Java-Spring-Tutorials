@@ -1,4 +1,5 @@
 [![Java CI with Maven](https://github.com/DVanderstoken/Java-Spring-Tutorials/actions/workflows/maven.yml/badge.svg)](https://github.com/DVanderstoken/Java-Spring-Tutorials/actions/workflows/maven.yml)
+[![CodeQL Advanced](https://github.com/DVanderstoken/Java-Spring-Tutorials/actions/workflows/codeql.yml/badge.svg)](https://github.com/DVanderstoken/Java-Spring-Tutorials/actions/workflows/codeql.yml)
 
 # Auditing & SoftDelete
 
