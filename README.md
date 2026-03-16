@@ -1,24 +1,5 @@
-[![Java CI with Maven](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/maven.yml/badge.svg?branch=version%2Fspring-boot-4.0)](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/maven.yml)
-[![Dependency review](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/dependency-review.yml/badge.svg?branch=version%2Fspring-boot-4.0)](https://github.com/FMS-EA/Java-Spring-Tutorials/actions/workflows/dependency-review.yml)
-
-<p align="center">
-    <a href="https://fms-ea.com/">
-        <img src="./resources/ENR-COM-12-Logo_FMS_MY_SYSTEM-v1.0.png" alt="FMS" width="100"/>
-    </a>
-</p>
-
-<p align="center">
-    <a href="https://fms-ea.com//">FMS</a>
-</p>
-
 <p align="center">
     <em>« Se réunir est un début, rester ensemble est un progrès, travailler ensemble est la réussite »</em>
-</p>
-
-<p align="center">
-    <a href="https://www.linkedin.com/company/fms-entreprise-adapt-e-et-solidaire/posts/?feedView=all" alt="FMS on LinkedIn">
-        <img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="FMS - Entreprise Adaptée et Solidaire" width="21"/>
-    </a>
 </p>
 
 <hr />
