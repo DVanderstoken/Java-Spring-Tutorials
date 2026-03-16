@@ -9,6 +9,8 @@ import org.hibernate.annotations.SoftDeleteType;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.fms.tutotrials.jpa.auditing.utils.SoftDeleteInstantConverter;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
@@ -18,7 +20,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @MappedSuperclass
-@SoftDelete(strategy = SoftDeleteType.TIMESTAMP, columnName = "DELETED_ON")
+@SoftDelete(strategy = SoftDeleteType.DELETED, columnName = "DELETED_ON", converter = SoftDeleteInstantConverter.class)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

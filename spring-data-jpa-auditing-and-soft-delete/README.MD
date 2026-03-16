@@ -27,17 +27,45 @@ Les connecteurs *Java DataBase Connectivity (JDBC)* et *Reactive Relational Data
 
 - Java persistence API [![Generic badge](https://img.shields.io/badge/eBook-PDF-red.svg)](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2.pdf) [![Generic badge](https://img.shields.io/badge/Online-HTML-blue.svg)](https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2)
 
-- Hibernate pour Spring Boot v4.0 [![Generic badge](https://img.shields.io/badge/Online-HTML-blue.svg)](https://docs.hibernate.org/stable/orm/userguide/html_single/)
+- Hibernate pour Spring Boot v3.5 [![Generic badge](https://img.shields.io/badge/Online-HTML-blue.svg)](https://docs.hibernate.org/orm//6.6//userguide/html_single/)
 
-- Spring Data JPA pour Spring Boot v4.0 [![Generic badge](https://img.shields.io/badge/Online-HTML-blue.svg)](https://docs.spring.io/spring-data/jpa/reference/)
+- Spring Data JPA pour Spring Boot v3.5 [![Generic badge](https://img.shields.io/badge/Online-HTML-blue.svg)](https://docs.spring.io/spring-data/jpa/reference/3.5/)
 
-## Nouveautés
+## Mise en oeuvre
 
-Hibernate a introduit depuis la version 7 une nouvelle option de stratégie pour la gestion de la suppression logique, basée sur une colonne de type Timestamp
+La mise en oeuvre proposée ici porte uniquement sur le *"Quand ?"* et toutes les *@Entity* doivent porter :
 
-Changement par rapport à Spring Boot 3.5 : 
+- la date de création,
 
-- **changement de stratégie** sur le *@SoftDelete* -> **strategy.TIMESTAMP**
+- la date de - dernière - modification, et
 
-- **suppression du convertisseur** devenu inutile 
+- la date de suppression.
 
+Cette dernière règle indique que les opérations de suppression sont des **suppressions logiques** et non des suppressions physiques.
+
+
+### Hibernate
+
+- @CreationTimestamp
+- @UpdateTimestamp
+
+### Spring Data Jpa
+
+- @CreatedDate
+- @LastModifiedDate
+
+### Suppression logique
+
+La suppression logique est portée par la framework Hibernate (implémentation utilisée par défaut dans Spring Data JPA) via l'annotation *@SoftDelete*
+
+Elle est configurable via trois options : 
+
+- **obligatoire** - la stratégie appliquée à l'indicateur de suppression logique,
+
+- **obligatoire** - le nom de la colonne qui contient l'indicateur
+
+- **facultatif** - le convertisseur à utiliser
+
+En ce qui concerne le convertisseur, les valeurs gérées par défaut sont des valeurs booléennes. Il faut donc, pour gérer une date, appliquer une conversion du type *Boolean* vers le type attendu, ici une date.
+
+Cf. [Notre convertisseur](./src/main/java/com/fms/tutotrials/jpa/auditing/utils/SoftDeleteInstantConverter.java)
